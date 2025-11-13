@@ -51,10 +51,17 @@ if not os.path.exists(MODEL_FILE):
     num_attribs = housing_features.drop("ocean_proximity", axis=1).columns.tolist()
     cat_attribs =["ocean_proximity"]
 
+<<<<<<< HEAD
     
     pipeline = build_eda_pipeline(num_attribs, cat_attribs) 
     
     
+=======
+   
+    pipeline = build_eda_pipeline(num_attribs, cat_attribs) 
+    
+   
+>>>>>>> 5f36809c0cceb6151dee840e372a8700b2f4558c
     housing_prepared = pipeline.fit_transform(housing_features)
 
 
