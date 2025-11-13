@@ -29,7 +29,7 @@ def build_eda_pipeline(num_attribs,cat_attribs):
     ("cat", cat_pipeline, cat_attribs),
     ])
     
-    # FIX: Added a return statement to return the pipeline object
+   
     return full_pipeline
 
 if not os.path.exists(MODEL_FILE):
@@ -45,20 +45,16 @@ if not os.path.exists(MODEL_FILE):
     housing_labels = housing["median_house_value"].copy()
     housing_features = housing.drop("median_house_value", axis=1)
 
-    # Note: If total_bedrooms had missing values in the original dataset, 
-    # filling them here before applying the pipeline is okay, but generally 
-    # you want your pipeline to handle all imputations to prevent data leakage 
-    # and ensure consistency during inference. The current method works as long 
-    # as the imputation strategy is sound.
+    
     housing_features["total_bedrooms"] = housing_features["total_bedrooms"].fillna(housing_features["total_bedrooms"].median())
 
     num_attribs = housing_features.drop("ocean_proximity", axis=1).columns.tolist()
     cat_attribs =["ocean_proximity"]
 
-    # This line now correctly receives the ColumnTransformer object
+    
     pipeline = build_eda_pipeline(num_attribs, cat_attribs) 
     
-    # This line (line 52 in your original file) will now execute correctly
+    
     housing_prepared = pipeline.fit_transform(housing_features)
 
 
@@ -73,7 +69,7 @@ if not os.path.exists(MODEL_FILE):
     
 else:
 
-     # INFERENCE PHASE
+    
     model = joblib.load(MODEL_FILE)
     pipeline = joblib.load(PIPELINE_FILE)
     input_data = pd.read_csv("input.csv")
