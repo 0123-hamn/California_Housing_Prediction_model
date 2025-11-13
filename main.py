@@ -51,17 +51,10 @@ if not os.path.exists(MODEL_FILE):
     num_attribs = housing_features.drop("ocean_proximity", axis=1).columns.tolist()
     cat_attribs =["ocean_proximity"]
 
-<<<<<<< HEAD
-    
+    # This line now correctly receives the ColumnTransformer object
     pipeline = build_eda_pipeline(num_attribs, cat_attribs) 
     
-    
-=======
-   
-    pipeline = build_eda_pipeline(num_attribs, cat_attribs) 
-    
-   
->>>>>>> 5f36809c0cceb6151dee840e372a8700b2f4558c
+    # This line (line 52 in your original file) will now execute correctly
     housing_prepared = pipeline.fit_transform(housing_features)
 
 
