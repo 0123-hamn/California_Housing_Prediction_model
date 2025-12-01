@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import os
-import joblib
+# import joblib
 
 from sklearn.model_selection import StratifiedShuffleSplit
 from sklearn.pipeline import Pipeline
@@ -14,9 +14,7 @@ from sklearn.ensemble import RandomForestRegressor
 MODEL_FILE = "model.pkl"
 PIPELINE_FILE = "pipeline.pkl"
 
-# ---------------------------
-# Build Pipeline
-# ---------------------------
+
 def build_eda_pipeline(num_attribs, cat_attribs):
     num_pipeline = Pipeline([
         ("imputer", SimpleImputer(strategy="median")),
@@ -35,9 +33,7 @@ def build_eda_pipeline(num_attribs, cat_attribs):
     return full_pipeline
 
 
-# ---------------------------
-# Train Model
-# ---------------------------
+
 def train_model():
 
     if os.path.exists(MODEL_FILE):
@@ -79,9 +75,7 @@ def train_model():
     return "Model trained successfully!"
 
 
-# ---------------------------
-# Prediction
-# ---------------------------
+
 def predict_values(input_df):
     model = joblib.load(MODEL_FILE)
     pipeline = joblib.load(PIPELINE_FILE)
@@ -93,9 +87,7 @@ def predict_values(input_df):
     return input_df
 
 
-# ---------------------------
-# Streamlit UI
-# ---------------------------
+
 st.title("🏡 California Housing Prediction App")
 st.write("Train model and run inference using Streamlit.")
 
@@ -114,7 +106,8 @@ if page == "Train Model":
     st.info("• Place 'housing.csv' in the same folder as this app.\n"
             "• Model will be saved as model.pkl and pipeline.pkl")
 
-# PREDICTION PAGE
+
+
 elif page == "Predict (Inference)":
     st.header("📊 Predict Median House Values")
 
@@ -142,3 +135,4 @@ elif page == "Predict (Inference)":
                     file_name="output.csv",
                     mime="text/csv"
                 )
+
