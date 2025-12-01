@@ -12,7 +12,9 @@ It includes:
 * Model training using Random Forest
 * Saving/loading ML models using Joblib
 * Running inference from CSV input
-* Auto-generated prediction outputs
+* Auto-generated prediction 
+* Deployed at streamlit
+  
 
 ---
 
