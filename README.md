@@ -14,6 +14,8 @@ It includes:
 * Running inference from CSV input
 * Auto-generated prediction 
 * Deployed at streamlit
+* <img width="1602" height="918" alt="image" src="https://github.com/user-attachments/assets/510d7e11-9a52-4051-8181-5acec9d7d2ef" />
+
   
 
 ---
